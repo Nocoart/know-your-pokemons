@@ -1,8 +1,12 @@
 header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   nav {
     display: flex;
     gap: 35px;
-    justify-content: center;
+    justify-content: space-around;
     align-items: baseline;
   }
   .logo {
@@ -19,6 +23,7 @@ header {
     width: 10vw;
     max-width: 50px;
     margin-bottom: 20px;
+    margin-right: 20px;
   }
   .link-pokeball {
     width: 10vw;

@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Switch from "../Switch/Switch";
 import { ThemeContext } from "../ThemeProvider/ThemeProvider";
 
 //styles
 import "./Header.scss";
+import Switch2 from "../Switch2/Switch2";
 
 //interfaces
 interface Props {}
@@ -19,22 +20,15 @@ const Header: React.FC<Props> = () => {
   const style = {
     color: theme === "light" ? "#333" : "#FFF",
   };
+
   return (
     <header>
-      <Switch
-        id=""
-        label=""
-        onChange={function (isChecked: boolean): void {
-          throw new Error("Function not implemented.");
-        }}
-        isChecked={false}
-      />
+      <img className="logo" src={logo} alt="" />
       <nav>
         <Link style={style} to="/">
           <img className="link-pokedex" src={pokedex} alt="" />
         </Link>
-        <img className="logo" src={logo} alt="" />
-
+        <Switch2 />
         <Link style={style} to="/play">
           <img className="link-pokeball" src={pokeball} alt="" />
         </Link>
