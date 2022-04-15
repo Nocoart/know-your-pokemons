@@ -13,8 +13,7 @@ interface State {
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [pokeList, setPokeList] = useState<State["pokeList"] | null>(null);
-  const [onlyOne, setOnlyOne] = useState<IPokemon>();
+  const [pokeList, setPokeList] = useState<State["pokeList"]>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,14 +28,19 @@ const Home: React.FC = () => {
       } catch (error: any) {
         console.log(error.message);
       }
-
-      console.log(dataArray);
     };
 
     fetchData();
   }, []);
 
-  return isLoading ? <Loader /> : <PokeCarousel pokeList={pokeList} />;
+  return isLoading && pokeList ? (
+    <Loader />
+  ) : (
+    <div className="home-page-container">
+      <h1>Pokedex Complet</h1>
+      <PokeCarousel pokeList={pokeList} />
+    </div>
+  );
 };
 
 export default Home;
