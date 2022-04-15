@@ -14,7 +14,7 @@ interface Props {
 
 const PokeCarousel: React.FC<Props> = ({ pokeList }) => {
   return (
-    <div className="poke-carousel">
+    <div className="poke-carousel-container">
       {pokeList ? pokeList.map((pokemon) => <PokeCard pokemon={pokemon} key={pokemon.id} />) : <Loader />}
     </div>
   );

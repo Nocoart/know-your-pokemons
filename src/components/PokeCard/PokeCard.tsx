@@ -10,7 +10,18 @@ interface Props {
 }
 
 const PokeCard: React.FC<Props> = ({ pokemon }) => {
-  return <div className="poke-card">{pokemon.name}</div>;
+  return (
+    <div className="poke-card-container">
+      <div className="thumb-container">
+        <img
+          className="thumb"
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
+          alt=""
+        />
+      </div>
+      <div className="details-container">{pokemon.name}</div>
+    </div>
+  );
 };
 
 export default PokeCard;
