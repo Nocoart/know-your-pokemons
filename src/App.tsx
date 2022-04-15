@@ -1,17 +1,19 @@
-import React, { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.scss";
-import "./Vars.scss";
+
+//components
 import Home from "./containers/Home/Home";
 import Play from "./containers/Play/Play";
 import Sandbox from "./components/Sandbox/Sandbox";
-import { ThemeContext } from "./components/ThemeProvider/ThemeProvider";
+import Header from "./components/Header/Header";
+
+//styles
+import "./App.scss";
+import "./Vars.scss";
 
 function App() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <Router>
-      <button onClick={toggleTheme}>Switch to {theme === "light" ? "dark" : "light"} mode</button>
+      <Header />
       <Routes>
         {/* <Route path="/" element={<Sandbox />} /> */}
         <Route path="/" element={<Home />} />

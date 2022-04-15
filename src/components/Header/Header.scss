@@ -1,0 +1,27 @@
+header {
+  nav {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .logo {
+    width: 50vw;
+    max-width: 400px;
+    min-width: 250px;
+  }
+
+  .link-pokeball,
+  .link-pokedex {
+    object-fit: contain;
+  }
+  .link-pokedex {
+    width: 10vw;
+    max-width: 50px;
+    margin-bottom: 20px;
+  }
+  .link-pokeball {
+    width: 10vw;
+    max-width: 80px;
+  }
+}
