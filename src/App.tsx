@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
+import "./Vars.scss";
 import Home from "./containers/Home/Home";
 import Play from "./containers/Play/Play";
 import Sandbox from "./components/Sandbox/Sandbox";
