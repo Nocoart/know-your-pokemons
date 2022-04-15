@@ -3,30 +3,29 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  nav {
-    display: flex;
-    gap: 35px;
-    justify-content: space-around;
-    align-items: baseline;
-  }
+
   .logo {
     width: 50vw;
-    max-width: 400px;
+    max-width: 700px;
     min-width: 250px;
+    margin-top: 50px;
+  }
+
+  nav {
+    margin: 50px 0;
+    display: flex;
+    gap: 5vw;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80vw;
   }
 
   .link-pokeball,
   .link-pokedex {
     object-fit: contain;
-  }
-  .link-pokedex {
-    width: 10vw;
-    max-width: 50px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-  }
-  .link-pokeball {
-    width: 10vw;
-    max-width: 80px;
+    img {
+      width: 10vw;
+      min-width: 60px;
+    }
   }
 }

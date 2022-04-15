@@ -17,9 +17,9 @@ export const ThemeProvider: React.FC<Props> = ({ children }) => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  const color = theme === "light" ? "#333" : "#FFF";
-  const backgroundColor = theme === "light" ? "#FFF" : "#333";
-  const borderColor = theme === "light" ? "#333" : "#FFF";
+  const color = theme === "light" ? "#333" : "#F8F8F8";
+  const backgroundColor = theme === "light" ? "#F8F8F8" : "#333";
+  const borderColor = theme === "light" ? "#333" : "#F8F8F8";
 
   document.body.style.color = color;
   document.body.style.backgroundColor = backgroundColor;

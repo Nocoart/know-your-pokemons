@@ -25,12 +25,12 @@ const Header: React.FC<Props> = () => {
     <header>
       <img className="logo" src={logo} alt="" />
       <nav>
-        <Link style={style} to="/">
-          <img className="link-pokedex" src={pokedex} alt="" />
+        <Link className="link-pokedex" style={style} to="/">
+          <img src={pokedex} alt="" />
         </Link>
         <Switch2 />
-        <Link style={style} to="/play">
-          <img className="link-pokeball" src={pokeball} alt="" />
+        <Link className="link-pokeball" style={style} to="/play">
+          <img src={pokeball} alt="" />
         </Link>
       </nav>
     </header>
