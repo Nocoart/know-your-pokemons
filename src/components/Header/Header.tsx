@@ -21,7 +21,14 @@ const Header: React.FC<Props> = () => {
   };
   return (
     <header>
-      <Switch />
+      <Switch
+        id=""
+        label=""
+        onChange={function (isChecked: boolean): void {
+          throw new Error("Function not implemented.");
+        }}
+        isChecked={false}
+      />
       <nav>
         <Link style={style} to="/">
           <img className="link-pokedex" src={pokedex} alt="" />

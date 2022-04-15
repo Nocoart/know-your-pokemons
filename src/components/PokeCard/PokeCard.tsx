@@ -23,8 +23,8 @@ const PokeCard: React.FC<Props> = ({ pokemon }) => {
       <div className="details-container">
         <div className="poke-name">{pokemon.name}</div>
         <div className="type-container">
-          {pokemon.types.map((type) => (
-            <PokeType type={type} />
+          {pokemon.types.map((type, index) => (
+            <PokeType type={type} key={pokemon.name + index.toString()} />
           ))}
         </div>
       </div>
