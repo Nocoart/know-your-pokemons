@@ -1,4 +1,6 @@
 import React from "react";
+import { useInView } from "react-intersection-observer";
+import { useSpring, animated } from "react-spring";
 
 //styles
 import "./PokeCard.scss";
@@ -11,8 +13,15 @@ interface Props {
 }
 
 const PokeCard: React.FC<Props> = ({ pokemon }) => {
+  const { ref: card, inView } = useInView({ threshold: 0 });
+  const props = useSpring({
+    to: { opacity: inView ? 1 : 0, x: inView ? 0 : -50 },
+    from: { opacity: 0, x: -50 },
+    config: { friction: 22 },
+  });
+
   return (
-    <div className="poke-card-container">
+    <animated.div className="poke-card-container" ref={card} style={props}>
       <div className="thumb-container">
         <img
           className="thumb"
@@ -28,7 +37,7 @@ const PokeCard: React.FC<Props> = ({ pokemon }) => {
           ))}
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 
