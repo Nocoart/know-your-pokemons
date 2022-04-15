@@ -38,7 +38,7 @@ const Home: React.FC = () => {
     <Loader />
   ) : (
     <div className="home-page-container">
-      <h1>Pokedex Complet</h1>
+      <h1>Complete Pokedex</h1>
       <PokeCarousel pokeList={pokeList} />
     </div>
   );
