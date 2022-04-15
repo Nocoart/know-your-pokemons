@@ -3,6 +3,7 @@ import React from "react";
 //styles
 import "./PokeCard.scss";
 import { IPokemon } from "pokeapi-typescript";
+import PokeType from "../PokeType/PokeType";
 
 //interfaces
 interface Props {
@@ -19,7 +20,14 @@ const PokeCard: React.FC<Props> = ({ pokemon }) => {
           alt=""
         />
       </div>
-      <div className="details-container">{pokemon.name}</div>
+      <div className="details-container">
+        <div className="poke-name">{pokemon.name}</div>
+        <div className="type-container">
+          {pokemon.types.map((type) => (
+            <PokeType type={type} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

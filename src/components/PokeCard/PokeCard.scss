@@ -1,18 +1,35 @@
 .poke-card-container {
-  width: 200px;
+  min-width: 200px;
   height: 70px;
-  border: 5px double black;
+  border: 3px double;
   border-radius: 8px;
   display: flex;
   align-items: center;
 
   .thumb-container {
-    width: 50px;
     margin: 10px;
   }
 
   .thumb {
     max-width: 50px;
     max-height: 50px;
+  }
+
+  .details-container {
+    width: 100%;
+    margin-right: 20px;
+  }
+
+  .poke-name {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .type-container {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-around;
   }
 }

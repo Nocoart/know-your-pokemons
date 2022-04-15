@@ -25,6 +25,7 @@ const Home: React.FC = () => {
         }
         setPokeList(dataArray);
         setIsLoading(false);
+        console.log(dataArray);
       } catch (error: any) {
         console.log(error.message);
       }
