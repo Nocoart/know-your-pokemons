@@ -24,8 +24,8 @@ const Home: React.FC = () => {
           const result = await PokeAPI.Pokemon.resolve(i);
           dataArray.push(result);
         }
-        setIsLoading(false);
         setPokeList(dataArray);
+        setIsLoading(false);
       } catch (error: any) {
         console.log(error.message);
       }
