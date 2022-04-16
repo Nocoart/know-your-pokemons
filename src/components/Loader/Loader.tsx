@@ -5,11 +5,12 @@ import "./Loader.scss";
 
 //assets
 const pokeball = require("../../assets/img/pokeball.png");
+const gif = require("../../assets/img/loader.gif");
 
 const Loader = () => {
   return (
     <div className="loader-container">
-      <img src={pokeball} alt="" />
+      <img src={gif} alt="" />
     </div>
   );
 };

@@ -1,37 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import Loader from "../../components/Loader/Loader";
 import { PokeListContext } from "../../contexts/PokeListProvider";
+import { FetchPokemonList } from "../../utils/FetchPokemonList";
 
 //styles
 import "./Home.scss";
 
-import PokeAPI, { IPokemon } from "pokeapi-typescript";
 import PokeCarousel from "../../components/PokeCarousel/PokeCarousel";
 
-interface State {
-  pokeList: IPokemon[];
-  setPokeList: React.Dispatch<React.SetStateAction<{ pokeList: IPokemon[] }>>;
-}
-
 const Home: React.FC = () => {
-  const { isLoading, setIsLoading, pokeList, setPokeList } = useContext(PokeListContext);
+  const { pokeList, setPokeList, isLoading, setIsLoading } = useContext(PokeListContext);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const dataArray: State["pokeList"] = [];
-      try {
-        for (let i = 1; i < 152; i++) {
-          const result = await PokeAPI.Pokemon.resolve(i);
-          dataArray.push(result);
-        }
-        setPokeList(dataArray);
-        setIsLoading(false);
-        console.log(dataArray);
-      } catch (error: any) {
-        console.log(error.message);
-      }
-    };
-    if (pokeList.length === 0) fetchData();
+    if (pokeList.length === 0) FetchPokemonList(setPokeList, setIsLoading);
   }, []);
 
   return isLoading ? (
