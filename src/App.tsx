@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { PokeListProvider } from "./contexts/PokeListProvider";
+import { CaugthListProvider } from "./contexts/CaugthListProvider";
 
 //components
 import Home from "./containers/Home/Home";
@@ -13,10 +15,14 @@ function App() {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/play" element={<Play />} />
-      </Routes>
+      <PokeListProvider>
+        <CaugthListProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/play" element={<Play />} />
+          </Routes>
+        </CaugthListProvider>
+      </PokeListProvider>
     </Router>
   );
 }

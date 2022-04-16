@@ -5,6 +5,7 @@
   border-radius: 8px;
   display: flex;
   align-items: center;
+  position: relative;
 
   .thumb-container {
     margin: 10px;
@@ -32,5 +33,13 @@
     margin-top: 10px;
     justify-content: center;
     gap: 10px;
+  }
+
+  .caught-indicator {
+    width: 20px;
+    position: absolute;
+    transform: rotate(15deg);
+    top: -10px;
+    right: -10px;
   }
 }

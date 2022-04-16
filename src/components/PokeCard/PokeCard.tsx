@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 import { useLocation } from "react-router-dom";
@@ -8,6 +8,9 @@ import PokeType from "../PokeType/PokeType";
 
 //styles
 import "./PokeCard.scss";
+import { CaugthListContext } from "../../contexts/CaugthListProvider";
+
+const pokeball = require("../../assets/img/pokeball.png");
 
 //interfaces
 interface Props {
@@ -16,6 +19,8 @@ interface Props {
 
 const PokeCard: React.FC<Props> = ({ pokemon }) => {
   const { pathname } = useLocation();
+  const { caughtList, setCaughtList } = useContext(CaugthListContext);
+
   const { ref: card, inView } = useInView({ threshold: 0 });
 
   const props = useSpring({
@@ -24,16 +29,18 @@ const PokeCard: React.FC<Props> = ({ pokemon }) => {
     config: { friction: 21 },
   });
 
-  const checkIfChaught = (id: number): string => {
-    const foundCookie = Cookies.get("pokeapp");
-    if (typeof foundCookie === "string") {
-      const caught: IPokemon[] = JSON.parse(foundCookie);
+  const checkCaught = (): boolean => (caughtList.includes(pokemon.id) ? true : false);
+  const handleClick = (): void => {
+    if (caughtList.includes(pokemon.id)) return;
+    else {
+      const copy = [...caughtList];
+      copy.push(pokemon.id);
+      setCaughtList(copy);
     }
-    return "";
   };
 
   return (
-    <animated.div className="poke-card-container" ref={card} style={props}>
+    <animated.div className="poke-card-container" ref={card} style={props} onClick={handleClick}>
       <div className="thumb-container">
         <img
           className="thumb"
@@ -42,13 +49,14 @@ const PokeCard: React.FC<Props> = ({ pokemon }) => {
         />
       </div>
       <div className="details-container">
-        <div className="poke-name">{pathname === "/" ? pokemon.name : checkIfChaught(pokemon.id)}</div>
+        <div className="poke-name">{pathname === "/" || checkCaught() ? pokemon.name : "?"}</div>
         <div className="type-container">
           {pokemon.types.map((type, index) => (
             <PokeType type={type} key={pokemon.name + index.toString()} />
           ))}
         </div>
       </div>
+      <img src={checkCaught() ? pokeball : null} alt="" className="caught-indicator" />
     </animated.div>
   );
 };
