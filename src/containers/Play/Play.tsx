@@ -21,10 +21,8 @@ const Play = () => {
 
   useEffect(() => {
     if (pokeList.length && currentArea) {
-      setIsLoading(true);
       getAreaPokemon(currentArea, setPokeInArea, pokeList);
     }
-    setIsLoading(false);
   }, [currentArea]);
 
   return isLoading ? (

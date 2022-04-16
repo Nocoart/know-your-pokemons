@@ -6,6 +6,9 @@
   background-image: linear-gradient(aqua, skyblue);
   position: relative;
   cursor: pointer;
+  @media (max-width: 630px) {
+    transform: scale(0.7);
+  }
 }
 
 .toggle.night {
