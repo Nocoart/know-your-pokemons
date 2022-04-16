@@ -3,7 +3,7 @@ import React from "react";
 
 //styles
 import "./PokeType.scss";
-import { getTypeColor } from "../../utils/GetTypeColor";
+import { getTypeColor } from "../../utils/getTypeColor";
 
 //interfaces
 interface Props {

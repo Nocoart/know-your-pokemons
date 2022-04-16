@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { ThemeContext } from "../../utils/ThemeProvider";
+import { ThemeContext } from "../../contexts/ThemeProvider";
 
 import "./Switch.scss";
 
