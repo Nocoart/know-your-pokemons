@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, createContext } from "react";
 import { IPokemon } from "pokeapi-typescript";
 
 //interfaces
@@ -16,11 +16,8 @@ interface State {
 export const PokeListContext = createContext<State>({} as State);
 
 export const PokeListProvider: React.FC<Props> = ({ children }) => {
-  //
   const [pokeList, setPokeList] = useState<State["pokeList"]>([] as State["pokeList"]);
   const [isLoading, setIsLoading] = useState(false);
-
-  // });
 
   return (
     <PokeListContext.Provider value={{ isLoading, setIsLoading, pokeList, setPokeList }}>

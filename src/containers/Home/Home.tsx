@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Loader from "../../components/Loader/Loader";
+import { PokeListContext } from "../../contexts/PokeListProvider";
 
 //styles
 import "./Home.scss";
@@ -13,8 +14,7 @@ interface State {
 }
 
 const Home: React.FC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [pokeList, setPokeList] = useState<State["pokeList"]>([] as State["pokeList"]);
+  const { isLoading, setIsLoading, pokeList, setPokeList } = useContext(PokeListContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,8 +31,7 @@ const Home: React.FC = () => {
         console.log(error.message);
       }
     };
-
-    fetchData();
+    if (pokeList.length === 0) fetchData();
   }, []);
 
   return isLoading ? (
