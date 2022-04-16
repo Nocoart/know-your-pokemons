@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Switch from "../Switch/Switch";
-import { ThemeContext } from "../ThemeProvider/ThemeProvider";
+import { ThemeContext } from "../../utils/ThemeProvider/ThemeProvider";
 
 //styles
 import "./Header.scss";
-import Switch2 from "../Switch2/Switch2";
+import Switch from "../Switch/Switch";
 
 //interfaces
 interface Props {}
@@ -22,13 +21,13 @@ const Header: React.FC<Props> = () => {
   };
 
   return (
-    <header>
+    <header className="container">
       <img className="logo" src={logo} alt="" />
       <nav>
         <Link className="link-pokedex" style={style} to="/">
           <img src={pokedex} alt="" />
         </Link>
-        <Switch2 />
+        <Switch />
         <Link className="link-pokeball" style={style} to="/play">
           <img src={pokeball} alt="" />
         </Link>

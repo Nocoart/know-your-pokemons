@@ -37,7 +37,7 @@ const Home: React.FC = () => {
   return isLoading && pokeList ? (
     <Loader />
   ) : (
-    <div className="home-page-container">
+    <div className="home-page-container container">
       <h1>Complete Pokedex</h1>
       <PokeCarousel pokeList={pokeList} />
     </div>
