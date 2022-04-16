@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactChild;
 }
 
-interface State {
+export interface State {
   pokeList: IPokemon[];
   setPokeList: React.Dispatch<React.SetStateAction<IPokemon[]>>;
   isLoading: boolean;
@@ -16,7 +16,7 @@ interface State {
 export const PokeListContext = createContext<State>({} as State);
 
 export const PokeListProvider: React.FC<Props> = ({ children }) => {
-  const [pokeList, setPokeList] = useState<State["pokeList"]>([] as State["pokeList"]);
+  const [pokeList, setPokeList] = useState<IPokemon[]>([] as IPokemon[]);
   const [isLoading, setIsLoading] = useState(false);
 
   return (

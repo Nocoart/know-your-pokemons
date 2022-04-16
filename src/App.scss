@@ -3,6 +3,7 @@ body {
 }
 
 .container {
+  width: 96vw;
   max-width: 1024px;
   margin: 0 auto;
 }
@@ -11,7 +12,7 @@ h1 {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  margin: 20px;
+  margin: 0 0 80px 0;
 }
 
 @keyframes rotates {

@@ -1,13 +1,11 @@
 import PokeAPI, { IPokemon } from "pokeapi-typescript";
 
-interface Props {
-  fn: (
-    setPokeList: React.Dispatch<React.SetStateAction<IPokemon[]>>,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-  ) => Promise<void>;
-}
+type FetchFunction = (
+  setPokeList: React.Dispatch<React.SetStateAction<IPokemon[]>>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+) => Promise<void>;
 
-export const FetchPokemonList: Props["fn"] = async (setPokeList, setIsLoading): Promise<void> => {
+export const fetchPokemonList: FetchFunction = async (setPokeList, setIsLoading) => {
   setIsLoading(true);
   const dataArray: IPokemon[] = [];
   try {
