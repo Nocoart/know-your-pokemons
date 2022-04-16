@@ -9,6 +9,7 @@ import PokeCarousel from "../../components/PokeCarousel/PokeCarousel";
 
 interface State {
   pokeList: IPokemon[];
+  setPokeList: React.Dispatch<React.SetStateAction<{ pokeList: IPokemon[] }>>;
 }
 
 const Home: React.FC = () => {
