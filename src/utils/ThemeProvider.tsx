@@ -12,7 +12,7 @@ interface Props {
 const hours = new Date().getHours();
 
 export const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(hours > 8 && hours < 20 ? "light" : "dark");
+  const [theme, setTheme] = useState<Theme>(hours > 9 && hours < 18 ? "light" : "dark");
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
