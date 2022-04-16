@@ -33,7 +33,7 @@ const Play = () => {
     <div className="container">
       <h1>Catch'em All</h1>
       <div className="current-position">
-        {currentArea ? `Currently in " ${currentArea.toUpperCase()} "` : "Chose an area on the map"}
+        {currentArea ? `Currently in " ${currentArea.toUpperCase()} "` : "Choose an area on the map"}
       </div>
       <Map setCurrentArea={setCurrentArea} />
       <PokeCarousel pokeList={pokeInArea} />
