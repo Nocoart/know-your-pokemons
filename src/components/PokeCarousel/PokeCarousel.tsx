@@ -9,7 +9,7 @@ import Loader from "../Loader/Loader";
 import PokeCard from "../PokeCard/PokeCard";
 
 interface Props {
-  pokeList: IPokemon[] | null;
+  pokeList: IPokemon[];
 }
 
 const PokeCarousel: React.FC<Props> = ({ pokeList }) => {

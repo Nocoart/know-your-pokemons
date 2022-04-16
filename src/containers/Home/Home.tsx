@@ -8,12 +8,12 @@ import PokeAPI, { IPokemon } from "pokeapi-typescript";
 import PokeCarousel from "../../components/PokeCarousel/PokeCarousel";
 
 interface State {
-  pokeList: IPokemon[] | null;
+  pokeList: IPokemon[];
 }
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [pokeList, setPokeList] = useState<State["pokeList"]>(null);
+  const [pokeList, setPokeList] = useState<State["pokeList"]>([] as State["pokeList"]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +34,7 @@ const Home: React.FC = () => {
     fetchData();
   }, []);
 
-  return isLoading && pokeList ? (
+  return isLoading ? (
     <Loader />
   ) : (
     <div className="home-page-container container">
