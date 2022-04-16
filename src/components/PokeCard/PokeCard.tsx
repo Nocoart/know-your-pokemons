@@ -17,7 +17,7 @@ const PokeCard: React.FC<Props> = ({ pokemon }) => {
   const props = useSpring({
     to: { opacity: inView ? 1 : 0, x: inView ? 0 : -50 },
     from: { opacity: 0, x: -50 },
-    config: { friction: 22 },
+    config: { friction: 21 },
   });
 
   return (
