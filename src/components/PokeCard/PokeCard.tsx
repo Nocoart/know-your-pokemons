@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import { IPokemon } from "pokeapi-typescript";
 import PokeType from "../PokeType/PokeType";
+import { checkIfAlreadyCaught } from "../../utils/checkIfAlreadyCaught";
 
 //components
 
@@ -40,26 +41,10 @@ const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon }) => {
       const caugthArray = caughtList.split(";");
       if (caugthArray.includes(pokemon?.id.toString())) setIsCaught(true);
     }
+    console.log("rendered");
   }, [renderSwitch]);
 
   //when successfully catching pokemon updates cookies
-  const handleSuccess = () => {
-    if (pathname === "/" || isCaught) return;
-    else {
-      const cookie = Cookies.get("caughtList");
-      if (typeof cookie === "string") {
-        const caughtList = JSON.parse(cookie);
-        const caugthArray = caughtList.split(";");
-        caugthArray.push(pokemon.id.toString());
-
-        Cookies.remove("caughtList");
-        Cookies.set("caughtList", JSON.stringify(caugthArray.join(";")));
-      } else {
-        Cookies.set("caughtList", JSON.stringify(pokemon.id.toString()));
-      }
-      setRenderSwitch(!renderSwitch);
-    }
-  };
 
   const handleClick = () => {
     if (setCurrentPokemon) setCurrentPokemon(pokemon);

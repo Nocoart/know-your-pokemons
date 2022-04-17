@@ -45,7 +45,6 @@ const Play = () => {
     for (let i = 0; i < randomIndexes.length; i++) {
       randomPokeInArea.push(pokeInArea[randomIndexes[i]]);
     }
-
     if (randomPokeInArea.length) {
       setRandomPokeList(randomPokeInArea);
     }
