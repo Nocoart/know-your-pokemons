@@ -1,11 +1,10 @@
 .poke-card-container {
-  min-width: 200px;
+  width: 200px;
   height: 70px;
   border: 3px double;
   border-radius: 8px;
   display: flex;
   align-items: center;
-  position: relative;
 
   .thumb-container {
     margin: 10px;
@@ -19,6 +18,7 @@
   .details-container {
     width: 100%;
     margin-right: 20px;
+    position: relative;
   }
 
   .poke-name {
@@ -37,9 +37,9 @@
 
   .caught-indicator {
     width: 20px;
-    position: absolute;
     transform: rotate(15deg);
-    top: -10px;
-    right: -10px;
+    top: -22px;
+    right: -30px;
+    position: absolute;
   }
 }

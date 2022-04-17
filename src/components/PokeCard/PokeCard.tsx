@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 import { useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import { IPokemon } from "pokeapi-typescript";
 import PokeType from "../PokeType/PokeType";
+
+//components
 
 //styles
 import "./PokeCard.scss";
@@ -14,9 +16,10 @@ const pokeball = require("../../assets/img/pokeball.png");
 //interfaces
 interface Props {
   pokemon: IPokemon;
+  setCurrentPokemon?: Dispatch<SetStateAction<IPokemon>>;
 }
 
-const PokeCard: React.FC<Props> = ({ pokemon }) => {
+const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon }) => {
   const { pathname } = useLocation();
   const [isCaught, setIsCaught] = useState(false);
   const [renderSwitch, setRenderSwitch] = useState(false);
@@ -35,11 +38,12 @@ const PokeCard: React.FC<Props> = ({ pokemon }) => {
     if (typeof cookie === "string") {
       const caughtList = JSON.parse(cookie);
       const caugthArray = caughtList.split(";");
-      if (caugthArray.includes(pokemon.id.toString())) setIsCaught(true);
+      if (caugthArray.includes(pokemon?.id.toString())) setIsCaught(true);
     }
   }, [renderSwitch]);
 
-  const handleClick = () => {
+  //when successfully catching pokemon updates cookies
+  const handleSuccess = () => {
     if (pathname === "/" || isCaught) return;
     else {
       const cookie = Cookies.get("caughtList");
@@ -57,25 +61,31 @@ const PokeCard: React.FC<Props> = ({ pokemon }) => {
     }
   };
 
+  const handleClick = () => {
+    if (setCurrentPokemon) setCurrentPokemon(pokemon);
+  };
+
   return (
-    <animated.div className="poke-card-container" ref={card} style={props} onClick={handleClick}>
-      <div className="thumb-container">
-        <img
-          className="thumb"
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
-          alt=""
-        />
-      </div>
-      <div className="details-container">
-        <div className="poke-name">{pathname === "/" || isCaught ? pokemon.name : "?"}</div>
-        <div className="type-container">
-          {pokemon.types.map((type, index) => (
-            <PokeType type={type} key={pokemon.name + index.toString()} />
-          ))}
+    pokemon && (
+      <animated.div className="poke-card-container" ref={card} style={props} onClick={handleClick}>
+        <div className="thumb-container">
+          <img
+            className="thumb"
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon?.id}.svg`}
+            alt=""
+          />
         </div>
-      </div>
-      <img src={isCaught ? pokeball : null} alt="" className="caught-indicator" />
-    </animated.div>
+        <div className="details-container">
+          <img src={isCaught ? pokeball : null} alt="" className="caught-indicator" />
+          <div className="poke-name">{pathname === "/" || isCaught ? pokemon.name : "?"}</div>
+          <div className="type-container">
+            {pokemon.types.map((type, index) => (
+              <PokeType type={type} key={pokemon.name + index.toString()} />
+            ))}
+          </div>
+        </div>
+      </animated.div>
+    )
   );
 };
 
