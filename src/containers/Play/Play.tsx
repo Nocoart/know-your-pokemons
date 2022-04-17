@@ -5,7 +5,7 @@ import { fetchPokemonList } from "../../utils/fetchPokemonList";
 import { IPokemon } from "pokeapi-typescript";
 
 import Modal from "../../components/Modal/Modal";
-import CatchGame from "../../components/Modal/Content/CatchGame";
+import CatchGame from "../../components/CatchGame/CatchGame";
 //styles
 import "./Play.scss";
 import { getAreaPokemon } from "../../utils/getAreaPokemon";
