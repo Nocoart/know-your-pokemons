@@ -8,34 +8,30 @@ import Cookies from "js-cookie";
 //interfaces
 interface Props {
   currentPokemon: IPokemon;
+  setCurrentPokemon: React.Dispatch<React.SetStateAction<IPokemon>>;
 }
 
-const CatchGame: React.FC<Props> = ({ currentPokemon }) => {
+const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
   const [isCaught, setIsCaught] = useState(false);
 
   useEffect(() => {
-    const checkIfCaught = () => {
-      if (true) setIsCaught(true);
-    };
+    const checkIfCaught = () => {};
     checkIfCaught();
   }, []);
 
   const handleSuccess = () => {
-    if (isCaught) return;
-    else {
-      const cookie = Cookies.get("caughtList");
-      if (typeof cookie === "string") {
-        const caughtList = JSON.parse(cookie);
-        const caugthArray = caughtList.split(";");
-        caugthArray.push(currentPokemon.id.toString());
+    const cookie = Cookies.get("caughtList");
+    if (typeof cookie === "string") {
+      const caughtList = JSON.parse(cookie);
+      const caugthArray = caughtList.split(";");
+      caugthArray.push(currentPokemon.id.toString());
 
-        Cookies.remove("caughtList");
-        Cookies.set("caughtList", JSON.stringify(caugthArray.join(";")));
-      } else {
-        Cookies.set("caughtList", JSON.stringify(currentPokemon.id.toString()));
-      }
-      // setRenderSwitch(!renderSwitch);
+      Cookies.remove("caughtList");
+      Cookies.set("caughtList", JSON.stringify(caugthArray.join(";")));
+    } else {
+      Cookies.set("caughtList", JSON.stringify(currentPokemon.id.toString()));
     }
+    setCurrentPokemon({} as IPokemon);
   };
   return (
     <div className="catch-game-container">
@@ -44,6 +40,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon }) => {
           {currentPokemon.name} -- {isCaught ? "caught" : "not yet"}
         </div>
       </div>
+      <button onClick={handleSuccess}>catch</button>
     </div>
   );
 };

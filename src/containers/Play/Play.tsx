@@ -59,10 +59,10 @@ const Play = () => {
         {currentArea ? `Currently in " ${currentArea.toUpperCase()} "` : "Choose an area on the map"}
       </div>
       <Map setCurrentArea={setCurrentArea} />
-      <PokeCarousel pokeList={randomPokeList} setCurrentPokemon={setCurrentPokemon} />
+      <PokeCarousel pokeList={randomPokeList} setCurrentPokemon={setCurrentPokemon} currentPokemon={currentPokemon} />
       {currentPokemon.id ? (
         <Modal setCurrentPokemon={setCurrentPokemon}>
-          <CatchGame currentPokemon={currentPokemon} />
+          <CatchGame currentPokemon={currentPokemon} setCurrentPokemon={setCurrentPokemon} />
         </Modal>
       ) : (
         ""

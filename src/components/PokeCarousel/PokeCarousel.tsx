@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { IPokemon } from "pokeapi-typescript";
 import PokeCard from "../PokeCard/PokeCard";
 
@@ -11,13 +11,19 @@ import Loader from "../Loader/Loader";
 interface Props {
   pokeList: IPokemon[];
   setCurrentPokemon?: Dispatch<SetStateAction<IPokemon>>;
+  currentPokemon?: IPokemon | undefined;
 }
 
-const PokeCarousel: React.FC<Props> = ({ pokeList, setCurrentPokemon }) => {
+const PokeCarousel: React.FC<Props> = ({ pokeList, setCurrentPokemon, currentPokemon }) => {
   return (
     <div className="poke-carousel-container">
       {pokeList?.map((pokemon, index) => (
-        <PokeCard pokemon={pokemon} setCurrentPokemon={setCurrentPokemon} key={pokemon?.id + index.toString()} />
+        <PokeCard
+          pokemon={pokemon}
+          currentPokemon={currentPokemon}
+          setCurrentPokemon={setCurrentPokemon}
+          key={pokemon?.id + index.toString()}
+        />
       ))}
       <Loader />
     </div>

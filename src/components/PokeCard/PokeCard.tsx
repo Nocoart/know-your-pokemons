@@ -18,9 +18,10 @@ const pokeball = require("../../assets/img/pokeball.png");
 interface Props {
   pokemon: IPokemon;
   setCurrentPokemon?: Dispatch<SetStateAction<IPokemon>>;
+  currentPokemon?: IPokemon;
 }
 
-const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon }) => {
+const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon, currentPokemon }) => {
   const { pathname } = useLocation();
   const [isCaught, setIsCaught] = useState(false);
   const [renderSwitch, setRenderSwitch] = useState(false);
@@ -42,7 +43,7 @@ const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon }) => {
       if (caugthArray.includes(pokemon?.id.toString())) setIsCaught(true);
     }
     console.log("rendered");
-  }, [renderSwitch]);
+  }, [currentPokemon]);
 
   //when successfully catching pokemon updates cookies
 
