@@ -11,7 +11,7 @@
 }
 
 .modal-container {
-  position: fixed;
+  position: absolute;
   z-index: 10;
   width: 500px;
   height: 400px;
@@ -20,4 +20,16 @@
   transform: translate(-50%, -50%);
   border: 3px double;
   border-radius: 8px;
+}
+
+@media (max-width: 530px) {
+  .modal-container {
+    transform: scale(0.8) translate(-62.5%, -80%);
+  }
+}
+
+@media (max-width: 425px) {
+  .modal-container {
+    transform: scale(0.6) translate(-83%, -100%);
+  }
 }

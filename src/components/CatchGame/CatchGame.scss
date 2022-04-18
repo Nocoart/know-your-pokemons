@@ -1,6 +1,59 @@
 .catch-game-container {
+  font-family: var(--secondary-font);
+  font-size: 24px;
   height: 100%;
   width: 100%;
   z-index: 20;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .caught-indicator {
+    width: 20px;
+  }
+
+  .opponent-container,
+  .player-container {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .opponent-info,
+  .player-info {
+    border: 3px double;
+    border-radius: 5px;
+    width: 60%;
+    padding: 10px;
+  }
+
+  .opponent-container {
+    height: 35%;
+
+    .opponent-info {
+      height: 80px;
+    }
+
+    .opponent-name {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .hp-bar {
+      width: 130px;
+    }
+  }
+
+  .player-container {
+    height: 50%;
+    display: flex;
+    align-items: flex-end;
+    .player-img {
+      width: 30%;
+    }
+    .player-info {
+      height: 120px;
+    }
+  }
 }
