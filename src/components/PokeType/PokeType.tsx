@@ -1,7 +1,7 @@
 import { IPokemonType } from "pokeapi-typescript";
 
 //components
-import { getTypeColor } from "../../utils/getTypeColor";
+import { getColorType } from "../../utils/getColorType";
 
 //styles
 import "./PokeType.scss";
@@ -13,7 +13,7 @@ interface Props {
 
 const PokeType: React.FC<Props> = ({ type }) => {
   return (
-    <div className="type" style={{ backgroundColor: getTypeColor(type.type.name) }}>
+    <div className="type" style={{ backgroundColor: getColorType(type.type.name) }}>
       {type.type.name}
     </div>
   );
