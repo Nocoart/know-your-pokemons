@@ -26,14 +26,16 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
   const [isCatchable, setIsCatchable] = useState(false);
   const [guess, setGuess] = useState("");
 
-  const { id, base_experience } = currentPokemon;
+  const { base_experience } = currentPokemon;
   const pokeMinLvl = (base_experience / 340) * 90;
   const pokeMaxLvl = (base_experience * 100) / 340;
   const [oponnentLvl, setOponnentLvl] = useState(0);
   const [playerLvl, setPlayerLvl] = useState(1);
 
   useEffect(() => {
-    if (checkIfAlreadyCaught(currentPokemon)) setIsCaught(true);
+    if (checkIfAlreadyCaught(currentPokemon)) {
+      setIsCaught(true);
+    }
 
     //set up oponent lvl
     const oponnentLvl = Math.floor(Math.random() * (pokeMaxLvl - pokeMinLvl) + pokeMinLvl);
@@ -42,7 +44,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
 
     //update player lvl
     const cookie = Cookies.get("caughtList");
-    let playerLvl: number = 0;
+    let playerLvl: number = 1;
     if (typeof cookie === "string") {
       const caughtList = JSON.parse(cookie);
       const caugthArray = caughtList.split(";");
@@ -52,6 +54,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
 
     //update catchability
     if (playerLvl + 20 >= oponnentLvl) setIsCatchable(true);
+    else setIsCatchable(false);
   }, []);
 
   //check success
