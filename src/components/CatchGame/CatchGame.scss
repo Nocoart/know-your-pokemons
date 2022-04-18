@@ -1,3 +1,11 @@
+button {
+  background-color: transparent;
+  border: none;
+  img {
+    animation: shake 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  }
+}
+
 .catch-game-container {
   font-family: var(--secondary-font);
   font-size: 20px;
@@ -23,7 +31,7 @@
   .player-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     border: 3px double;
     border-radius: 5px;
     padding: 10px;
@@ -49,7 +57,7 @@
     }
 
     .hp-bar {
-      width: 130px;
+      width: 150px;
       margin-left: 70px;
     }
   }
@@ -65,5 +73,10 @@
       height: 140px;
       width: 68%;
     }
+  }
+
+  .input-section {
+    display: flex;
+    justify-content: space-between;
   }
 }

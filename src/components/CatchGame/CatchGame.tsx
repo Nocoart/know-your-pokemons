@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useSpring, animated } from "react-spring";
 
 //styles
 import "./CatchGame.scss";
@@ -18,6 +19,9 @@ interface Props {
 }
 
 const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
+  const playerRef = useRef(null);
+  const oponnentRef = useRef(null);
+
   const [isCaught, setIsCaught] = useState(false);
   const [isCatchable, setIsCatchable] = useState(false);
   const [guess, setGuess] = useState("");
@@ -72,9 +76,17 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
     setCurrentPokemon({} as IPokemon);
   };
 
+  //animating game
+  const opponentAnim = useSpring({
+    from: { opacity: 0, x: -1000 },
+    to: { opacity: 1, x: 0 },
+    config: { friction: 46 },
+  });
+  const playerAnim = useSpring({ from: { opacity: 0, x: 150 }, to: { opacity: 1, x: 0 }, config: { friction: 46 } });
+
   return (
     <div className="catch-game-container">
-      <div className="opponent-container">
+      <animated.div className="opponent-container" style={opponentAnim}>
         <div className="opponent-info">
           <div className="info-top">
             <div className="opponent-name">{isCaught ? currentPokemon.name : "?"}</div>
@@ -85,7 +97,12 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
           </div>
 
           <div className="opponent-info-bottom">
-            {isCaught && <img src={pokeball} alt="" className="caught-indicator" />}
+            <img
+              src={pokeball}
+              alt=""
+              className="caught-indicator"
+              style={{ filter: isCaught ? "" : "grayscale(1)" }}
+            />
             <img src={hpBar} alt="" className="hp-bar" />
           </div>
         </div>
@@ -93,9 +110,9 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${currentPokemon?.id}.svg`}
           alt=""
         />
-      </div>
+      </animated.div>
 
-      <div className="player-container">
+      <animated.div className="player-container" ref={playerRef} style={playerAnim}>
         <img src={ash} alt="" className="player-img" />
         <div className="player-info">
           <div className="info-top">
@@ -105,20 +122,17 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
               {playerLvl}
             </div>
           </div>
-          <PlayerDialog
-            isCaught={isCaught}
-            handleSuccess={handleSuccess}
-            currentPokemon={currentPokemon}
-            isCatchable={isCatchable}
-          />
+          <PlayerDialog isCaught={isCaught} isCatchable={isCatchable} />
           {isCatchable && !isCaught && (
             <div className="input-section">
               <input type="text" value={guess} onChange={(e) => setGuess(e.target.value)} autoFocus={true} />
-              <button onClick={() => handleSuccess(guess)}>catch</button>
+              <button onClick={() => handleSuccess(guess)}>
+                <img src={pokeball} alt="" className="caught-indicator" />{" "}
+              </button>
             </div>
           )}
         </div>
-      </div>
+      </animated.div>
     </div>
   );
 };

@@ -3,17 +3,14 @@ import Typed from "react-typed";
 
 //styles
 import "./PlayerDialog.scss";
-import { IPokemon } from "pokeapi-typescript";
 
 //interfaces
 interface Props {
   isCaught: boolean;
-  handleSuccess: (guess: string) => void;
-  currentPokemon: IPokemon;
   isCatchable: boolean;
 }
 
-const PlayerDialog: React.FC<Props> = ({ isCaught, isCatchable, handleSuccess, currentPokemon }) => {
+const PlayerDialog: React.FC<Props> = ({ isCaught, isCatchable }) => {
   const generateDialog = (): string => {
     if (isCaught) return "You already caught this one, try catching new ones to level up ";
     if (isCatchable) return "Hey! you can catch this one, but what it's name again ?";
@@ -23,7 +20,7 @@ const PlayerDialog: React.FC<Props> = ({ isCaught, isCatchable, handleSuccess, c
   return (
     <>
       <div className="player-dialog">
-        <Typed strings={[generateDialog()]} />
+        <Typed strings={[generateDialog()]} typeSpeed={20} startDelay={1500} />
       </div>
     </>
   );
