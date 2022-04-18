@@ -1,13 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
-
-//styles
-import "./CatchGame.scss";
 import { IPokemon } from "pokeapi-typescript";
 import Cookies from "js-cookie";
+
+//components
 import { checkIfAlreadyCaught } from "../../utils/checkIfAlreadyCaught";
 import PlayerDialog from "../PlayerDialog/PlayerDialog";
 
+//styles
+import "./CatchGame.scss";
+import Modal from "../Modal/Modal";
+
+//assets
 const pokeball = require("../../assets/img/pokeball.png");
 const ash = require("../../assets/img/ash.png");
 const hpBar = require("../../assets/img/hp-bar.png");
@@ -19,18 +23,17 @@ interface Props {
 }
 
 const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
-  const playerRef = useRef(null);
-  const oponnentRef = useRef(null);
-
   const [isCaught, setIsCaught] = useState(false);
   const [isCatchable, setIsCatchable] = useState(false);
   const [guess, setGuess] = useState("");
 
   const { id } = currentPokemon;
   const pokeMinLvl = (id / 151) * 80;
-  const pokeMaxLvl = (id * 110) / 151;
+  const pokeMaxLvl = (id * 100) / 151;
   const [oponnentLvl, setOponnentLvl] = useState(0);
   const [playerLvl, setPlayerLvl] = useState(0);
+
+  const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {
     if (checkIfAlreadyCaught(currentPokemon)) setIsCaught(true);
@@ -50,30 +53,32 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
     }
 
     //update catchability
-    if (playerLvl + 10 >= oponnentLvl) setIsCatchable(true);
+    if (playerLvl + 20 >= oponnentLvl) setIsCatchable(true);
   }, []);
 
+  //check success
   const handleSuccess = (guess: string) => {
-    //check success
     if (guess.toUpperCase() !== currentPokemon.name.toUpperCase()) {
       window.alert("oh no you missed it");
       setCurrentPokemon({} as IPokemon);
       return;
     }
 
+    //manage caught list
     const cookie = Cookies.get("caughtList");
     if (typeof cookie === "string") {
       const caughtList = JSON.parse(cookie);
       const caugthArray = caughtList.split(";");
       if (caugthArray.includes(currentPokemon.id.toString())) return;
-      caugthArray.push(currentPokemon.id.toString());
 
+      caugthArray.push(currentPokemon.id.toString());
       Cookies.remove("caughtList");
       Cookies.set("caughtList", JSON.stringify(caugthArray.join(";")));
     } else {
       Cookies.set("caughtList", JSON.stringify(currentPokemon.id.toString()));
     }
     setCurrentPokemon({} as IPokemon);
+    window.alert("Congrats! You got it !!!");
   };
 
   //animating game
@@ -82,7 +87,12 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
     to: { opacity: 1, x: 0 },
     config: { friction: 46 },
   });
-  const playerAnim = useSpring({ from: { opacity: 0, x: 150 }, to: { opacity: 1, x: 0 }, config: { friction: 46 } });
+  const playerAnim = useSpring({
+    from: { opacity: 0, x: 350 },
+    to: { opacity: 1, x: 0 },
+    config: { friction: 46 },
+    delay: 1000,
+  });
 
   return (
     <div className="catch-game-container">
@@ -112,7 +122,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
         />
       </animated.div>
 
-      <animated.div className="player-container" ref={playerRef} style={playerAnim}>
+      <animated.div className="player-container" style={playerAnim}>
         <img src={ash} alt="" className="player-img" />
         <div className="player-info">
           <div className="info-top">
@@ -125,9 +135,9 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
           <PlayerDialog isCaught={isCaught} isCatchable={isCatchable} />
           {isCatchable && !isCaught && (
             <div className="input-section">
-              <input type="text" value={guess} onChange={(e) => setGuess(e.target.value)} autoFocus={true} />
+              <input type="text" value={guess} onChange={(e) => setGuess(e.target.value)} placeholder="write here" />
               <button onClick={() => handleSuccess(guess)}>
-                <img src={pokeball} alt="" className="caught-indicator" />{" "}
+                <img src={pokeball} alt="" className="caught-indicator" />
               </button>
             </div>
           )}

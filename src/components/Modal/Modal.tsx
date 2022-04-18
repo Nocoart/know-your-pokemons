@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeProvider";
+import { IPokemon } from "pokeapi-typescript";
 
 //styles
 import "./Modal.scss";
-import { IPokemon } from "pokeapi-typescript";
 
 //interfaces
 interface Props {

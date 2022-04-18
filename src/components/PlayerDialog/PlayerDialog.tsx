@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Typed from "react-typed";
+import React from "react";
+import Typewriter from "typewriter-effect";
 
 //styles
 import "./PlayerDialog.scss";
@@ -20,7 +20,12 @@ const PlayerDialog: React.FC<Props> = ({ isCaught, isCatchable }) => {
   return (
     <>
       <div className="player-dialog">
-        <Typed strings={[generateDialog()]} typeSpeed={20} startDelay={1500} />
+        <Typewriter
+          options={{ delay: 20, cursor: "" }}
+          onInit={(typewriter) => {
+            typewriter.pauseFor(2000).typeString(generateDialog()).start();
+          }}
+        />
       </div>
     </>
   );

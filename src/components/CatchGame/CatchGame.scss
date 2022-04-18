@@ -12,7 +12,6 @@ button {
   height: 100%;
   width: 100%;
   z-index: 20;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,6 +43,10 @@ button {
 
   .opponent-container {
     height: 35%;
+
+    img {
+      max-width: 150px;
+    }
 
     .opponent-info {
       height: 80px;
@@ -78,5 +81,16 @@ button {
   .input-section {
     display: flex;
     justify-content: space-between;
+    input {
+      background-color: rgba(103, 103, 103, 0.358);
+      padding-left: 10px;
+      border: none;
+      border-radius: 5px;
+      font-family: var(--secondary-font);
+      font-size: 24px;
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }

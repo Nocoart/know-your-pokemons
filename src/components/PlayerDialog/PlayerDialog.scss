@@ -2,4 +2,12 @@
   min-height: 60px;
   display: flex;
   align-items: center;
+
+  span {
+    display: block;
+    height: 60px;
+  }
+  .Typewriter__cursor {
+    display: none;
+  }
 }

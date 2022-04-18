@@ -9,6 +9,7 @@ import Switch from "../Switch/Switch";
 //interfaces
 interface Props {}
 
+//assets
 const logo = require("../../assets/img/pokemon-logo.png");
 const pokedex = require("../../assets/img/pokedex.png");
 const pokeball = require("../../assets/img/pokeball.png");
