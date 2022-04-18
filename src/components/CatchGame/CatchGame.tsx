@@ -9,7 +9,6 @@ import PlayerDialog from "../PlayerDialog/PlayerDialog";
 
 //styles
 import "./CatchGame.scss";
-import Modal from "../Modal/Modal";
 
 //assets
 const pokeball = require("../../assets/img/pokeball.png");

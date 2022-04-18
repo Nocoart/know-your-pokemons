@@ -88,6 +88,7 @@ button {
       border-radius: 5px;
       font-family: var(--secondary-font);
       font-size: 24px;
+      color: inherit;
       &:focus {
         outline: none;
       }
