@@ -1,6 +1,6 @@
 .catch-game-container {
   font-family: var(--secondary-font);
-  font-size: 24px;
+  font-size: 20px;
   height: 100%;
   width: 100%;
   z-index: 20;
@@ -21,10 +21,17 @@
   }
   .opponent-info,
   .player-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border: 3px double;
     border-radius: 5px;
-    width: 60%;
     padding: 10px;
+  }
+  .info-top {
+    font-size: 24px;
+    display: flex;
+    justify-content: space-around;
   }
 
   .opponent-container {
@@ -32,6 +39,7 @@
 
     .opponent-info {
       height: 80px;
+      width: 60%;
     }
 
     .opponent-name {
@@ -42,6 +50,7 @@
 
     .hp-bar {
       width: 130px;
+      margin-left: 70px;
     }
   }
 
@@ -53,7 +62,8 @@
       width: 30%;
     }
     .player-info {
-      height: 120px;
+      height: 140px;
+      width: 68%;
     }
   }
 }
