@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 //components
 import { checkIfAlreadyCaught } from "../../utils/checkIfAlreadyCaught";
 import PlayerDialog from "../PlayerDialog/PlayerDialog";
+import Loader from "../Loader/Loader";
 
 //styles
 import "./CatchGame.scss";
@@ -101,7 +102,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
   });
 
   return isLoading ? (
-    "loading..."
+    <Loader />
   ) : (
     <div className="catch-game-container">
       <animated.div className="opponent-container" style={opponentAnim}>
