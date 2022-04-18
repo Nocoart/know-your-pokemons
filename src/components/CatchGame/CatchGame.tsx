@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./CatchGame.scss";
 import { IPokemon } from "pokeapi-typescript";
 import Cookies from "js-cookie";
+import { checkIfAlreadyCaught } from "../../utils/checkIfAlreadyCaught";
 
 //interfaces
 interface Props {
@@ -15,8 +16,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
   const [isCaught, setIsCaught] = useState(false);
 
   useEffect(() => {
-    const checkIfCaught = () => {};
-    checkIfCaught();
+    if (checkIfAlreadyCaught(currentPokemon)) setIsCaught(true);
   }, []);
 
   const handleSuccess = () => {

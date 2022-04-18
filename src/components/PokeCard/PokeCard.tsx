@@ -36,13 +36,7 @@ const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon, currentPokemon 
 
   useEffect(() => {
     //controll isCaught
-    const cookie = Cookies.get("caughtList");
-    if (typeof cookie === "string") {
-      const caughtList = JSON.parse(cookie);
-      const caugthArray = caughtList.split(";");
-      if (caugthArray.includes(pokemon?.id.toString())) setIsCaught(true);
-    }
-    console.log("rendered");
+    if (checkIfAlreadyCaught(pokemon)) setIsCaught(true);
   }, [currentPokemon]);
 
   //when successfully catching pokemon updates cookies

@@ -34,16 +34,11 @@ const Play = () => {
 
   //get a random selecction of 10
   useEffect(() => {
-    const randomIndexes: number[] = [];
-    for (let i = 0; i < 10; i++) {
-      const index = Math.floor(Math.random() * pokeInArea.length + 1);
-      randomIndexes.push(index);
-    }
-    console.log("randomIndexes nombres", randomIndexes.length);
-
     const randomPokeInArea: IPokemon[] = [];
-    for (let i = 0; i < randomIndexes.length; i++) {
-      randomPokeInArea.push(pokeInArea[randomIndexes[i]]);
+    console.log("START");
+
+    for (let i = 0; i < 10; i++) {
+      randomPokeInArea.push(pokeInArea[Math.floor(Math.random() * pokeInArea.length)]);
     }
     if (randomPokeInArea.length) {
       setRandomPokeList(randomPokeInArea);
