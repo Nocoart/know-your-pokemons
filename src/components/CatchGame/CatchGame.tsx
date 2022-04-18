@@ -30,7 +30,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
   const pokeMinLvl = (base_experience / 340) * 90;
   const pokeMaxLvl = (base_experience * 100) / 340;
   const [oponnentLvl, setOponnentLvl] = useState(0);
-  const [playerLvl, setPlayerLvl] = useState(0);
+  const [playerLvl, setPlayerLvl] = useState(1);
 
   useEffect(() => {
     if (checkIfAlreadyCaught(currentPokemon)) setIsCaught(true);
