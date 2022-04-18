@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import Map from "../../components/Map/Map";
 import { PokeListContext } from "../../contexts/PokeListProvider";
 import { fetchPokemonList } from "../../utils/fetchPokemonList";
@@ -35,7 +35,6 @@ const Play = () => {
   //get a random selecction of 10
   useEffect(() => {
     const randomPokeInArea: IPokemon[] = [];
-    console.log("START");
 
     for (let i = 0; i < 10; i++) {
       randomPokeInArea.push(pokeInArea[Math.floor(Math.random() * pokeInArea.length)]);

@@ -15,7 +15,6 @@ export const fetchPokemonList: FetchFunction = async (setPokeList, setIsLoading)
     }
     setPokeList(dataArray);
     setIsLoading(false);
-    console.log(dataArray);
   } catch (error: any) {
     console.log(error.message);
   }
