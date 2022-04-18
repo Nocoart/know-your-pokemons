@@ -1,12 +1,13 @@
-import React, { useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
+
+//components
+import PokeCarousel from "../../components/PokeCarousel/PokeCarousel";
 import Loader from "../../components/Loader/Loader";
 import { PokeListContext } from "../../contexts/PokeListProvider";
 import { fetchPokemonList } from "../../utils/fetchPokemonList";
 
 //styles
 import "./Home.scss";
-
-import PokeCarousel from "../../components/PokeCarousel/PokeCarousel";
 
 const Home: React.FC = () => {
   const { pokeList, setPokeList, isLoading, setIsLoading } = useContext(PokeListContext);

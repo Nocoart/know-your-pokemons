@@ -26,20 +26,19 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
   const [isCatchable, setIsCatchable] = useState(false);
   const [guess, setGuess] = useState("");
 
-  const { id } = currentPokemon;
-  const pokeMinLvl = (id / 151) * 80;
-  const pokeMaxLvl = (id * 100) / 151;
+  const { id, base_experience } = currentPokemon;
+  const pokeMinLvl = (base_experience / 340) * 90;
+  const pokeMaxLvl = (base_experience * 100) / 340;
   const [oponnentLvl, setOponnentLvl] = useState(0);
   const [playerLvl, setPlayerLvl] = useState(0);
-
-  const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {
     if (checkIfAlreadyCaught(currentPokemon)) setIsCaught(true);
 
     //set up oponent lvl
     const oponnentLvl = Math.floor(Math.random() * (pokeMaxLvl - pokeMinLvl) + pokeMinLvl);
-    setOponnentLvl(oponnentLvl > 99 ? 99 : oponnentLvl);
+
+    setOponnentLvl(oponnentLvl > 99 ? 99 : oponnentLvl < 1 ? 1 : oponnentLvl);
 
     //update player lvl
     const cookie = Cookies.get("caughtList");

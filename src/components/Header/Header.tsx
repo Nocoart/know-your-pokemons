@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
+//component
 import { ThemeContext } from "../../contexts/ThemeProvider";
+import Switch from "../Switch/Switch";
 
 //styles
 import "./Header.scss";
-import Switch from "../Switch/Switch";
 
 //interfaces
 interface Props {}

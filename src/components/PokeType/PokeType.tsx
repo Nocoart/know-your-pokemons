@@ -1,9 +1,10 @@
 import { IPokemonType } from "pokeapi-typescript";
-import React from "react";
+
+//components
+import { getTypeColor } from "../../utils/getTypeColor";
 
 //styles
 import "./PokeType.scss";
-import { getTypeColor } from "../../utils/getTypeColor";
 
 //interfaces
 interface Props {

@@ -1,5 +1,7 @@
-import React, { Dispatch, SetStateAction, useEffect } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { IPokemon } from "pokeapi-typescript";
+
+//components
 import PokeCard from "../PokeCard/PokeCard";
 
 //styles

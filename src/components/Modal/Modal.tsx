@@ -17,6 +17,7 @@ const Modal: React.FC<Props> = ({ children, setCurrentPokemon }) => {
   const style = {
     backgroundColor: theme === "dark" ? "#333" : "#FFF",
   };
+
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
   };

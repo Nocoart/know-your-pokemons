@@ -1,9 +1,11 @@
-import React, { SetStateAction, useRef } from "react";
+import React, { SetStateAction } from "react";
 
 //styles
 import "./Map.scss";
 
+//assets
 const map = require("../../assets/img/kanto.png");
+
 //interfaces
 interface Props {
   setCurrentArea: React.Dispatch<SetStateAction<string>>;

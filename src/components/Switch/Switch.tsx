@@ -1,6 +1,9 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
+
+//components
 import { ThemeContext } from "../../contexts/ThemeProvider";
 
+//styles
 import "./Switch.scss";
 
 const Switch: React.FC = () => {

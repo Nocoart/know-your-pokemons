@@ -2,12 +2,11 @@ import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 import { useLocation } from "react-router-dom";
-import Cookies from "js-cookie";
 import { IPokemon } from "pokeapi-typescript";
 import PokeType from "../PokeType/PokeType";
-import { checkIfAlreadyCaught } from "../../utils/checkIfAlreadyCaught";
 
 //components
+import { checkIfAlreadyCaught } from "../../utils/checkIfAlreadyCaught";
 
 //styles
 import "./PokeCard.scss";
@@ -24,7 +23,6 @@ interface Props {
 const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon, currentPokemon }) => {
   const { pathname } = useLocation();
   const [isCaught, setIsCaught] = useState(false);
-  const [renderSwitch, setRenderSwitch] = useState(false);
 
   // slide-in animation on intersection
   const { ref: card, inView } = useInView({ threshold: 0 });
