@@ -52,7 +52,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
     if (typeof cookie === "string") {
       const caughtList = JSON.parse(cookie);
       const caugthArray = caughtList.split(";");
-      playerLvl = Math.floor((caugthArray.length / 151) * 100);
+      playerLvl = Math.floor(caugthArray.length);
       setPlayerLvl(playerLvl < 1 ? 1 : playerLvl);
     }
 
