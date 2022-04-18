@@ -22,13 +22,15 @@ interface Props {
 }
 
 const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   const [isCaught, setIsCaught] = useState(false);
   const [isCatchable, setIsCatchable] = useState(true);
   const [guess, setGuess] = useState("");
 
   const { base_experience } = currentPokemon;
-  const pokeMinLvl = (base_experience / 340) * 90;
-  const pokeMaxLvl = (base_experience * 100) / 340;
+  const pokeMinLvl = (base_experience / 340) * 70;
+  const pokeMaxLvl = (base_experience * 120) / 340;
   const [oponnentLvl, setOponnentLvl] = useState(0);
   const [playerLvl, setPlayerLvl] = useState(1);
 
@@ -37,6 +39,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
       setIsCaught(true);
     }
 
+    console.log("rendering");
     //set up oponent lvl
     const oponnentLvl = Math.floor(Math.random() * (pokeMaxLvl - pokeMinLvl) + pokeMinLvl);
 
@@ -55,6 +58,8 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
     //update catchability
     if (playerLvl + 20 >= oponnentLvl) setIsCatchable(true);
     else setIsCatchable(false);
+
+    setIsLoading(false);
   }, []);
 
   //check success
@@ -95,7 +100,9 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
     delay: 1000,
   });
 
-  return (
+  return isLoading ? (
+    "loading..."
+  ) : (
     <div className="catch-game-container">
       <animated.div className="opponent-container" style={opponentAnim}>
         <div className="opponent-info">
