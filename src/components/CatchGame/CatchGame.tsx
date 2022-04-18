@@ -49,7 +49,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
       const caughtList = JSON.parse(cookie);
       const caugthArray = caughtList.split(";");
       playerLvl = Math.floor((caugthArray.length / 151) * 100);
-      setPlayerLvl(playerLvl);
+      setPlayerLvl(playerLvl < 1 ? 1 : playerLvl);
     }
 
     //update catchability
