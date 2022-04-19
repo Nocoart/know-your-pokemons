@@ -17,7 +17,10 @@ const Home: React.FC = () => {
   }, []);
 
   return isLoading ? (
-    <Loader />
+    <div className="loader-container">
+      <p>Pika is loading your page...</p>
+      <Loader />
+    </div>
   ) : (
     <div className=" container">
       <h1>Pokedex</h1>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { IPokemon } from "pokeapi-typescript";
 import Cookies from "js-cookie";
@@ -23,7 +23,7 @@ interface Props {
 }
 
 const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [isCaught, setIsCaught] = useState(false);
   const [isCatchable, setIsCatchable] = useState(true);
@@ -35,7 +35,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
   const [oponnentLvl, setOponnentLvl] = useState(0);
   const [playerLvl, setPlayerLvl] = useState(1);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (checkIfAlreadyCaught(currentPokemon)) {
       setIsCaught(true);
     }
