@@ -23,7 +23,7 @@ interface Props {
 }
 
 const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [isCaught, setIsCaught] = useState(false);
   const [isCatchable, setIsCatchable] = useState(true);
