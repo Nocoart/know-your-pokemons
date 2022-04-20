@@ -1,4 +1,6 @@
-.home-page-container {
-  width: 96vw;
-  margin: 0 auto;
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

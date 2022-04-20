@@ -5,6 +5,7 @@ import PokeCarousel from "../../components/PokeCarousel/PokeCarousel";
 import Loader from "../../components/Loader/Loader";
 import { PokeListContext } from "../../contexts/PokeListProvider";
 import { fetchPokemonList } from "../../utils/fetchPokemonList";
+import Pokedex from "../../components/Pokedex/Pokedex";
 
 //styles
 import "./Home.scss";
@@ -22,8 +23,8 @@ const Home: React.FC = () => {
       <Loader />
     </div>
   ) : (
-    <div className=" container">
-      <h1>Pokedex</h1>
+    <div className="container home-page">
+      <Pokedex />
       <PokeCarousel pokeList={pokeList} />
     </div>
   );

@@ -10,6 +10,7 @@ import Loader from "../Loader/Loader";
 
 //styles
 import "./CatchGame.scss";
+import { getPlayerLvl } from "../../utils/getPlayerLevel";
 
 //assets
 const pokeball = require("../../assets/img/pokeball.png");
@@ -50,14 +51,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setIsOpen, setSuccess }) =
     setOponnentLvl(oponnentLvl > 99 ? 99 : oponnentLvl < 1 ? 1 : oponnentLvl);
 
     //update player lvl
-    const cookie = Cookies.get("caughtList");
-    let playerLvl: number = 1;
-    if (typeof cookie === "string") {
-      const caughtList = JSON.parse(cookie);
-      const caugthArray = caughtList.split(";");
-      playerLvl = Math.floor(caugthArray.length);
-      setPlayerLvl(playerLvl < 1 ? 1 : playerLvl);
-    }
+    setPlayerLvl(getPlayerLvl());
 
     //update catchability
     if (playerLvl + 20 >= oponnentLvl) setIsCatchable(true);

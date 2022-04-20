@@ -60,6 +60,7 @@ const Play = () => {
         {currentArea ? `Currently in " ${currentArea.toUpperCase()} "` : "Choose an area on the map"}
       </div>
       <Map setCurrentArea={setCurrentArea} />
+      <div className="current-position">{currentArea ? `` : "Choose an area on the map"}</div>
       <PokeCarousel
         pokeList={randomPokeList}
         setCurrentPokemon={setCurrentPokemon}

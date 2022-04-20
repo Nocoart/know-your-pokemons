@@ -2,11 +2,12 @@
   width: 100%;
   height: 100%;
   padding: 0 10px;
-  font-size: 19px;
-  line-height: 20px;
+  font-size: 22px;
+  line-height: 23px;
 
   span {
     display: block;
     margin-top: 10px;
+    font-family: var(--secondary-font);
   }
 }
