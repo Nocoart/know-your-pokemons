@@ -11,6 +11,9 @@ import "./Play.scss";
 import { getAreaPokemon } from "../../utils/getAreaPokemon";
 import PokeCarousel from "../../components/PokeCarousel/PokeCarousel";
 import Loader from "../../components/Loader/Loader";
+import CatchSuccess from "../../components/CatchSuccess/CatchSuccess";
+
+export type Success = "wait" | "yes" | "no";
 
 const Play = () => {
   const [currentArea, setCurrentArea] = useState("");
@@ -18,7 +21,7 @@ const Play = () => {
   const [randomPokeList, setRandomPokeList] = useState<IPokemon[]>([] as IPokemon[]);
   const [currentPokemon, setCurrentPokemon] = useState<IPokemon>({} as IPokemon);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [success, setSuccess] = useState<Success>("wait");
   const { pokeList, setPokeList, isLoading, setIsLoading } = useContext(PokeListContext);
 
   //fetch all pokemons
@@ -60,12 +63,16 @@ const Play = () => {
       <PokeCarousel
         pokeList={randomPokeList}
         setCurrentPokemon={setCurrentPokemon}
-        currentPokemon={currentPokemon}
+        success={success}
         setIsOpen={setIsOpen}
       />
       {isOpen ? (
         <Modal setIsOpen={setIsOpen}>
-          <CatchGame currentPokemon={currentPokemon} setIsOpen={setIsOpen} />
+          {success === "wait" ? (
+            <CatchGame currentPokemon={currentPokemon} setIsOpen={setIsOpen} setSuccess={setSuccess} />
+          ) : (
+            <CatchSuccess setIsOpen={setIsOpen} success={success} setSuccess={setSuccess} />
+          )}
         </Modal>
       ) : (
         ""

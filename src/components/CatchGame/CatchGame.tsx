@@ -17,13 +17,15 @@ const ash = require("../../assets/img/ash.png");
 const hpBar = require("../../assets/img/hp-bar.png");
 
 //interfaces
+export type Success = "wait" | "yes" | "no";
+
 interface Props {
   currentPokemon: IPokemon;
-  // setCurrentPokemon: React.Dispatch<React.SetStateAction<IPokemon>>;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSuccess: React.Dispatch<React.SetStateAction<Success>>;
 }
 
-const CatchGame: React.FC<Props> = ({ currentPokemon, setIsOpen }) => {
+const CatchGame: React.FC<Props> = ({ currentPokemon, setIsOpen, setSuccess }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [isCaught, setIsCaught] = useState(false);
@@ -64,11 +66,11 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setIsOpen }) => {
     setIsLoading(false);
   }, []);
 
-  //check success
+  //CHECK SUCCESS
+
   const handleSuccess = (guess: string) => {
     if (guess.toUpperCase() !== currentPokemon.name.toUpperCase()) {
-      window.alert("oh no you missed it");
-      setIsOpen(false);
+      setSuccess("no");
       return;
     }
 
@@ -85,8 +87,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setIsOpen }) => {
     } else {
       Cookies.set("caughtList", JSON.stringify(currentPokemon.id.toString()));
     }
-    setIsOpen(false);
-    window.alert("Congrats! You got it !!!");
+    setSuccess("yes");
   };
 
   //animating game
@@ -100,6 +101,12 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setIsOpen }) => {
     to: { opacity: 1, x: 0 },
     config: { friction: 46 },
     delay: 1000,
+  });
+
+  const formAnim = useSpring({
+    from: { opacity: 0, y: 50 },
+    to: { opacity: 1, y: 0 },
+    delay: 4000,
   });
 
   return isLoading ? (
@@ -144,12 +151,12 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setIsOpen }) => {
           </div>
           <PlayerDialog isCaught={isCaught} isCatchable={isCatchable} />
           {isCatchable && !isCaught && (
-            <form className="input-section" onSubmit={() => handleSuccess(guess)}>
+            <animated.form className="input-section" onSubmit={() => handleSuccess(guess)} style={formAnim}>
               <input type="text" value={guess} onChange={(e) => setGuess(e.target.value)} placeholder="write here" />
               <button onClick={() => handleSuccess(guess)} type="submit">
                 <img src={pokeball} alt="" className="caught-indicator" />
               </button>
-            </form>
+            </animated.form>
           )}
         </div>
       </animated.div>

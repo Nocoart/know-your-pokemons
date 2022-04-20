@@ -1,0 +1,20 @@
+.success-container {
+  height: 100%;
+  position: relative;
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .description {
+    font-family: var(--primary-font);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-size: 30px;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
+    z-index: 10;
+  }
+}
