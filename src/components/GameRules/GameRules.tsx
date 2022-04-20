@@ -8,7 +8,7 @@ import "./GameRules.scss";
 interface Props {}
 
 const rules = [
-  "In this game your goal is to catch as much pokemonn as possible, it makes you level up.",
+  "In this game your goal is to catch as much pokemon as possible, it makes you level up.",
   "There is two pages :",
   "To go to the pokedex, click on the pokedex on the left.",
   "To go to the map and start catching pokemons click on the pokeball.",
