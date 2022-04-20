@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { IPokemon } from "pokeapi-typescript";
 import Cookies from "js-cookie";
@@ -19,10 +19,11 @@ const hpBar = require("../../assets/img/hp-bar.png");
 //interfaces
 interface Props {
   currentPokemon: IPokemon;
-  setCurrentPokemon: React.Dispatch<React.SetStateAction<IPokemon>>;
+  // setCurrentPokemon: React.Dispatch<React.SetStateAction<IPokemon>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
+const CatchGame: React.FC<Props> = ({ currentPokemon, setIsOpen }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [isCaught, setIsCaught] = useState(false);
@@ -67,7 +68,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
   const handleSuccess = (guess: string) => {
     if (guess.toUpperCase() !== currentPokemon.name.toUpperCase()) {
       window.alert("oh no you missed it");
-      setCurrentPokemon({} as IPokemon);
+      setIsOpen(false);
       return;
     }
 
@@ -84,7 +85,7 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
     } else {
       Cookies.set("caughtList", JSON.stringify(currentPokemon.id.toString()));
     }
-    setCurrentPokemon({} as IPokemon);
+    setIsOpen(false);
     window.alert("Congrats! You got it !!!");
   };
 
@@ -143,12 +144,12 @@ const CatchGame: React.FC<Props> = ({ currentPokemon, setCurrentPokemon }) => {
           </div>
           <PlayerDialog isCaught={isCaught} isCatchable={isCatchable} />
           {isCatchable && !isCaught && (
-            <div className="input-section">
+            <form className="input-section" onSubmit={() => handleSuccess(guess)}>
               <input type="text" value={guess} onChange={(e) => setGuess(e.target.value)} placeholder="write here" />
-              <button onClick={() => handleSuccess(guess)}>
+              <button onClick={() => handleSuccess(guess)} type="submit">
                 <img src={pokeball} alt="" className="caught-indicator" />
               </button>
-            </div>
+            </form>
           )}
         </div>
       </animated.div>

@@ -17,6 +17,7 @@ const Play = () => {
   const [pokeInArea, setPokeInArea] = useState([] as IPokemon[]);
   const [randomPokeList, setRandomPokeList] = useState<IPokemon[]>([] as IPokemon[]);
   const [currentPokemon, setCurrentPokemon] = useState<IPokemon>({} as IPokemon);
+  const [isOpen, setIsOpen] = useState(false);
 
   const { pokeList, setPokeList, isLoading, setIsLoading } = useContext(PokeListContext);
 
@@ -56,10 +57,15 @@ const Play = () => {
         {currentArea ? `Currently in " ${currentArea.toUpperCase()} "` : "Choose an area on the map"}
       </div>
       <Map setCurrentArea={setCurrentArea} />
-      <PokeCarousel pokeList={randomPokeList} setCurrentPokemon={setCurrentPokemon} currentPokemon={currentPokemon} />
-      {currentPokemon.id ? (
-        <Modal setCurrentPokemon={setCurrentPokemon}>
-          <CatchGame currentPokemon={currentPokemon} setCurrentPokemon={setCurrentPokemon} />
+      <PokeCarousel
+        pokeList={randomPokeList}
+        setCurrentPokemon={setCurrentPokemon}
+        currentPokemon={currentPokemon}
+        setIsOpen={setIsOpen}
+      />
+      {isOpen ? (
+        <Modal setIsOpen={setIsOpen}>
+          <CatchGame currentPokemon={currentPokemon} setIsOpen={setIsOpen} />
         </Modal>
       ) : (
         ""

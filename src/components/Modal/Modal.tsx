@@ -8,10 +8,10 @@ import "./Modal.scss";
 //interfaces
 interface Props {
   children: React.ReactChild;
-  setCurrentPokemon: React.Dispatch<React.SetStateAction<IPokemon>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Modal: React.FC<Props> = ({ children, setCurrentPokemon }) => {
+const Modal: React.FC<Props> = ({ children, setIsOpen }) => {
   const { theme } = useContext(ThemeContext);
 
   const style = {
@@ -23,7 +23,7 @@ const Modal: React.FC<Props> = ({ children, setCurrentPokemon }) => {
   };
 
   return (
-    <div className="overlay" onClick={() => setCurrentPokemon({} as React.SetStateAction<IPokemon>)}>
+    <div className="overlay" onClick={() => setIsOpen(false)}>
       <div className="modal-container" style={style} onClick={(e) => handleClick(e)}>
         {children}
       </div>

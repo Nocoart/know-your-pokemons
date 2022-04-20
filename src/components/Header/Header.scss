@@ -3,6 +3,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   .logo {
     width: 50vw;
@@ -30,5 +31,22 @@ header {
     :hover {
       animation: shake 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
     }
+  }
+
+  .center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .rule-btn {
+    animation: shake 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    animation-iteration-count: 5;
+    color: white;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 50%;
   }
 }

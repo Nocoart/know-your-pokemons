@@ -18,9 +18,10 @@ interface Props {
   pokemon: IPokemon;
   setCurrentPokemon?: Dispatch<SetStateAction<IPokemon>>;
   currentPokemon?: IPokemon;
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon, currentPokemon }) => {
+const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon, currentPokemon, setIsOpen }) => {
   const { pathname } = useLocation();
   const [isCaught, setIsCaught] = useState(false);
 
@@ -41,6 +42,7 @@ const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon, currentPokemon 
 
   const handleClick = () => {
     if (setCurrentPokemon) setCurrentPokemon(pokemon);
+    if (pathname === "/play" && setIsOpen) setIsOpen(true);
   };
 
   return (
