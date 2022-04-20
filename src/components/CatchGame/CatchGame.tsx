@@ -18,6 +18,7 @@ const ash = require("../../assets/img/ash.png");
 const hpBar = require("../../assets/img/hp-bar.png");
 
 //interfaces
+
 export type Success = "wait" | "yes" | "no";
 
 interface Props {
