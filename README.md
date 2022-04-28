@@ -12,6 +12,8 @@ Depending on the region you choose on the map, a random set of pokemon will appe
 Change area on the map to get a new set of pokemons.
 To catch a pokemon you must enter its exact name in the input field then click the pokeball.
 
+There is only 151 Pokemons
+
 Happy hunting 😊
 
 
