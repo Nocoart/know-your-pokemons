@@ -3,9 +3,11 @@ import { useEffect, useContext } from "react";
 //components
 import PokeCarousel from "../../components/PokeCarousel/PokeCarousel";
 import Loader from "../../components/Loader/Loader";
-import { PokeListContext } from "../../contexts/PokeListProvider";
-import { fetchPokemonList } from "../../utils/fetchPokemonList";
 import Pokedex from "../../components/Pokedex/Pokedex";
+
+//utils, services & context
+import { PokeListContext } from "../../contexts/PokeListProvider";
+import fetchPokemonList from "../../services/fetchPokemonList";
 
 //styles
 import "./Home.scss";

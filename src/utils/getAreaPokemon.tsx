@@ -32,7 +32,7 @@ const getRightType: State["getRightType"] = (area) => {
   return types;
 };
 
-export const getAreaPokemon: State["getAreaPoke"] = (currentArea, setPokeInArea, pokeList) => {
+const getAreaPokemon: State["getAreaPoke"] = (currentArea, setPokeInArea, pokeList) => {
   const pokeArray: IPokemon[] = [];
 
   pokeList.forEach((poke) => {
@@ -45,3 +45,5 @@ export const getAreaPokemon: State["getAreaPoke"] = (currentArea, setPokeInArea,
 
   setPokeInArea(pokeArray);
 };
+
+export default getAreaPokemon;

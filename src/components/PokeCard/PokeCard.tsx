@@ -6,7 +6,7 @@ import { IPokemon } from "pokeapi-typescript";
 import PokeType from "../PokeType/PokeType";
 
 //components
-import { checkIfAlreadyCaught } from "../../utils/checkIfAlreadyCaught";
+import checkIfAlreadyCaught from "../../utils/checkIfAlreadyCaught";
 
 //styles
 import "./PokeCard.scss";

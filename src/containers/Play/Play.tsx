@@ -1,17 +1,21 @@
 import { useEffect, useState, useContext } from "react";
-import Map from "../../components/Map/Map";
-import { PokeListContext } from "../../contexts/PokeListProvider";
-import { fetchPokemonList } from "../../utils/fetchPokemonList";
 import { IPokemon } from "pokeapi-typescript";
 
+//components
+import Map from "../../components/Map/Map";
 import Modal from "../../components/Modal/Modal";
 import CatchGame from "../../components/CatchGame/CatchGame";
-//styles
-import "./Play.scss";
-import { getAreaPokemon } from "../../utils/getAreaPokemon";
 import PokeCarousel from "../../components/PokeCarousel/PokeCarousel";
 import Loader from "../../components/Loader/Loader";
 import CatchSuccess from "../../components/CatchSuccess/CatchSuccess";
+
+//utils, services & context
+import { PokeListContext } from "../../contexts/PokeListProvider";
+import getAreaPokemon from "../../utils/getAreaPokemon";
+import fetchPokemonList from "../../services/fetchPokemonList";
+
+//styles
+import "./Play.scss";
 
 export type Success = "wait" | "yes" | "no";
 

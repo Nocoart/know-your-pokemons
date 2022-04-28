@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 
-export const getPlayerLvl = (): number => {
+const getPlayerLvl = (): number => {
   const cookie = Cookies.get("caughtList");
   if (typeof cookie === "string") {
     const caughtList = JSON.parse(cookie);
@@ -8,3 +8,4 @@ export const getPlayerLvl = (): number => {
     return Math.floor(caugthArray.length);
   } else return 1;
 };
+export default getPlayerLvl;

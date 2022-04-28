@@ -4,13 +4,15 @@ import { IPokemon } from "pokeapi-typescript";
 import Cookies from "js-cookie";
 
 //components
-import { checkIfAlreadyCaught } from "../../utils/checkIfAlreadyCaught";
 import PlayerDialog from "../PlayerDialog/PlayerDialog";
 import Loader from "../Loader/Loader";
 
+//utils, services & context
+import checkIfAlreadyCaught from "../../utils/checkIfAlreadyCaught";
+import getPlayerLvl from "../../utils/getPlayerLevel";
+
 //styles
 import "./CatchGame.scss";
-import { getPlayerLvl } from "../../utils/getPlayerLevel";
 
 //assets
 const pokeball = require("../../assets/img/pokeball.png");
@@ -18,7 +20,6 @@ const ash = require("../../assets/img/ash.png");
 const hpBar = require("../../assets/img/hp-bar.png");
 
 //interfaces
-
 export type Success = "wait" | "yes" | "no";
 
 interface Props {

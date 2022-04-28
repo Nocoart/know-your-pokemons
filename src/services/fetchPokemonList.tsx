@@ -5,7 +5,7 @@ type FetchFunction = (
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => Promise<void>;
 
-export const fetchPokemonList: FetchFunction = async (setPokeList, setIsLoading) => {
+const fetchPokemonList: FetchFunction = async (setPokeList, setIsLoading) => {
   setIsLoading(true);
   const dataArray: IPokemon[] = [];
   try {
@@ -19,3 +19,5 @@ export const fetchPokemonList: FetchFunction = async (setPokeList, setIsLoading)
     console.log(error.message);
   }
 };
+
+export default fetchPokemonList;

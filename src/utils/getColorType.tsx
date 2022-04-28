@@ -1,4 +1,4 @@
-export const getColorType = (typeName: string): string => {
+const getColorType = (typeName: string): string => {
   let color: string = "";
   switch (typeName) {
     case "grass":
@@ -58,3 +58,5 @@ export const getColorType = (typeName: string): string => {
   }
   return color;
 };
+
+export default getColorType;

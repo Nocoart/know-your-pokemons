@@ -1,7 +1,7 @@
 import { IPokemonType } from "pokeapi-typescript";
 
-//components
-import { getColorType } from "../../utils/getColorType";
+//utils, services & context
+import getColorType from "../../utils/getColorType";
 
 //styles
 import "./PokeType.scss";
