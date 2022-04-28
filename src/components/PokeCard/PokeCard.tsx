@@ -46,7 +46,12 @@ const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon, success, setIsO
 
   return (
     pokemon && (
-      <animated.div className="poke-card-container" ref={card} style={props} onClick={handleClick}>
+      <animated.div
+        className="poke-card-container"
+        ref={card}
+        style={{ ...props, cursor: pathname === "/play" ? "pointer" : "" }}
+        onClick={handleClick}
+      >
         <div className="thumb-container">
           <img
             className="thumb"
