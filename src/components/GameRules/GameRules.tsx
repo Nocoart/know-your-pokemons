@@ -26,7 +26,7 @@ const GameRules: React.FC<Props> = () => {
           options={{ delay: 1, cursor: "" }}
           onInit={(typewriter) => {
             typewriter
-              .pauseFor(index > 4 ? index * 2500 : index * 2000)
+              .pauseFor(index > 4 ? index * 2700 : index * 2000)
               .typeString(str)
               .start();
           }}
