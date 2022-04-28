@@ -15,7 +15,17 @@ To catch a pokemon you must enter its exact name in the input field then click t
 Happy hunting 😊
 
 
+[click here to start](https://know-your-pokemons.netlify.app)
 
+
+Animations are handled by [React-spring](https://react-spring.io/)
+Game progress is handled by the cookies, please don't mess with it ... it'll crash your game. You would have to delete your cookies & start again.
+We definitely dont want that.
+
+There is no tests yet, they will be implemented in the future.
+
+
+### `Boring informations`
 
 
 ### `yarn start`
