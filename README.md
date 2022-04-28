@@ -17,7 +17,7 @@ There is only 151 Pokemons
 Happy hunting 😊
 
 
-[click here to start](https://know-your-pokemons.netlify.app)
+[Click here to leave this page and start](https://know-your-pokemons.netlify.app)
 
 
 Animations are handled by [React-spring](https://react-spring.io/)
