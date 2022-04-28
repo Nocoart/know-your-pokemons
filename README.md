@@ -9,6 +9,9 @@ There is two pages :
 
 Depending on the region you choose on the map, a random set of pokemon will appear, if your level is too far from the pokemon level you'll not be able to catch it.
 
+The level of each pokemon is randomized bu based on the base experience of a pokemon. 
+If you are familiar with them you'll know which to catch first.
+
 Change area on the map to get a new set of pokemons.
 To catch a pokemon you must enter its exact name in the input field then click the pokeball.
 
