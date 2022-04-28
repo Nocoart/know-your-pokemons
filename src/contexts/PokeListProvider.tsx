@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import { IPokemon } from "pokeapi-typescript";
+import { PokeList, DispatchPokelist } from "../types/types";
 
 //interfaces
 interface Props {
@@ -7,8 +7,8 @@ interface Props {
 }
 
 export interface State {
-  pokeList: IPokemon[];
-  setPokeList: React.Dispatch<React.SetStateAction<IPokemon[]>>;
+  pokeList: PokeList;
+  setPokeList: DispatchPokelist;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -16,7 +16,7 @@ export interface State {
 export const PokeListContext = createContext<State>({} as State);
 
 export const PokeListProvider: React.FC<Props> = ({ children }) => {
-  const [pokeList, setPokeList] = useState<IPokemon[]>([] as IPokemon[]);
+  const [pokeList, setPokeList] = useState<PokeList>([] as PokeList);
   const [isLoading, setIsLoading] = useState(false);
 
   return (

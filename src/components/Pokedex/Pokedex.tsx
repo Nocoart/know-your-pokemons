@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 //styles
 import "./Pokedex.scss";
+
+//utils, services & context
 import getPlayerLvl from "../../utils/getPlayerLevel";
 import getNumberCaught from "../../utils/getNumberCaught";
 
 const pokedexImg = require("../../assets/img/pokedex.png");
 const ash = require("../../assets/img/ash.png");
 
-//interfaces
-interface Props {}
-
-const Pokedex: React.FC<Props> = () => {
+const Pokedex: React.FC = () => {
   useEffect(() => {}, []);
   return (
     <div className="pokedex">

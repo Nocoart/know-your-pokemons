@@ -1,8 +1,7 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
+import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 import { useLocation } from "react-router-dom";
-import { IPokemon } from "pokeapi-typescript";
 import PokeType from "../PokeType/PokeType";
 
 //components
@@ -11,15 +10,18 @@ import checkIfAlreadyCaught from "../../utils/checkIfAlreadyCaught";
 //styles
 import "./PokeCard.scss";
 
-const pokeball = require("../../assets/img/pokeball.png");
-
 //interfaces
+import { Poke, DispatchPoke } from "../../types/types";
+
 interface Props {
-  pokemon: IPokemon;
-  setCurrentPokemon?: Dispatch<SetStateAction<IPokemon>>;
+  pokemon: Poke;
+  setCurrentPokemon?: DispatchPoke;
   success?: "yes" | "no" | "wait";
   setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+//assets
+const pokeball = require("../../assets/img/pokeball.png");
 
 const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon, success, setIsOpen }) => {
   const { pathname } = useLocation();
@@ -36,7 +38,6 @@ const PokeCard: React.FC<Props> = ({ pokemon, setCurrentPokemon, success, setIsO
   useEffect(() => {
     //controll isCaught
     if (checkIfAlreadyCaught(pokemon)) setIsCaught(true);
-    console.log("render-cards");
   }, [success]);
 
   const handleClick = () => {

@@ -3,18 +3,19 @@ import { IPokemon } from "pokeapi-typescript";
 
 //components
 import PokeCard from "../PokeCard/PokeCard";
+import Loader from "../Loader/Loader";
 
 //styles
 import "./PokeCarousel.scss";
 
 //interfaces
-import Loader from "../Loader/Loader";
+import { PokeList, DispatchPoke } from "../../types/types";
 
 interface Props {
-  pokeList: IPokemon[];
-  setCurrentPokemon?: Dispatch<SetStateAction<IPokemon>>;
+  pokeList: PokeList;
+  setCurrentPokemon?: DispatchPoke;
   success?: "yes" | "no" | "wait";
-  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen?: Dispatch<React.SetStateAction<boolean>>;
 }
 
 const PokeCarousel: React.FC<Props> = ({ pokeList, setCurrentPokemon, success, setIsOpen }) => {
