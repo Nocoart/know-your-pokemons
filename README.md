@@ -1,10 +1,37 @@
-# Getting Started with Create React App
+# Welcome to my little Pokemon Journey.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## This is a little game written in Typescript React.
 
-## Available Scripts
+In this game your goal is to catch as much pokemon as possible, it makes you level up (how original 🤓).
+There is two pages :
+- To go to the pokedex, click on the pokedex on the left.
+- To go to the map and start catching pokemons click on the pokeball.
 
-In the project directory, you can run:
+Depending on the region you choose on the map, a random set of pokemon will appear, if your level is too far from the pokemon level you'll not be able to catch it.
+
+The level of each pokemon is randomized but based on the base experience of a pokemon. 
+If you are familiar with them you'll know which to catch first.
+
+Change area on the map to get a new set of pokemons.
+To catch a pokemon you must enter its exact name in the input field then click the pokeball.
+
+There is only 151 Pokemons
+
+Happy hunting 😊
+
+
+[Click here to leave this page and start](https://know-your-pokemons.netlify.app)
+
+
+Animations are handled by [React-spring](https://react-spring.io/)
+Game progress is handled by the cookies, please don't mess with it ... it'll crash your game. You would have to delete your cookies & start again.
+We definitely dont want that.
+
+There is no tests yet, they will be implemented in the future.
+
+
+### `Boring informations`
+
 
 ### `yarn start`
 
